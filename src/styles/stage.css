@@ -24,7 +24,11 @@
   display: none !important;
 }
 
-.stage.is-embed canvas,
+.stage.is-embed canvas {
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .stage.is-embed #markers,
 .stage.is-embed .callout {
   display: none !important;

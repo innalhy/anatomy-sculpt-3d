@@ -7,7 +7,7 @@ export function startLoop(ctx) {
     requestAnimationFrame(animate);
     if (ctx.state.suspended) return;
     const dt = Math.min(clock.getDelta(), 0.05);
-    if (!ctx.state.dragging && !ctx.reduceMotion && ctx.model) {
+    if (!ctx.state.dragging && !ctx.state.quizzing && !ctx.reduceMotion && ctx.model) {
       ctx.model.rotation.y += 0.08 * dt;
     }
     stepFocus(dt, ctx);

@@ -3,6 +3,7 @@ import * as THREE from "three";
 import { CATALOG, modelById } from "./content/catalog.js";
 import { LIBRARY, regionById } from "./content/regions.js";
 import { createStudio, frameBox, frameInSitu } from "./scene/createStudio.js";
+import { stageView } from "./scene/stageView.js";
 import { createControls } from "./scene/controls.js";
 import { startLoop } from "./scene/loop.js";
 import { loadSkeleton, pointAlong, surfaceToward } from "./scene/loadSkeleton.js";
@@ -35,6 +36,7 @@ async function start() {
     focusing: false,
     dragging: false,
     suspended: false,
+    quizzing: false,
     modelRadius: 1,
   };
 
@@ -179,22 +181,28 @@ async function start() {
     renderer.setSize(w, h, false);
   }
 
+  function applyStage(mode) {
+    const view = stageView(mode);
+    stage.classList.toggle("is-embed", view.embed);
+    state.suspended = view.embed;
+    viewer.hidden = view.viewerHidden;
+    markerLayer.hidden = view.markersHidden;
+    if (!view.canvasHidden) {
+      fitCanvas();
+      renderer.render(scene, camera);
+    }
+  }
+
   function showSkeleton() {
-    stage.classList.remove("is-embed");
-    state.suspended = false;
-    viewer.hidden = true;
+    applyStage("skeleton");
     places.hidden = false;
     markerLayer.hidden = false;
-    fitCanvas();
   }
 
   function mountViewer(item) {
     clearMarks();
-    stage.classList.add("is-embed");
-    state.suspended = true;
+    applyStage("embed");
     places.hidden = true;
-    markerLayer.hidden = true;
-    viewer.hidden = false;
     if (viewer.dataset.src !== item.viewer) {
       viewer.dataset.src = item.viewer;
       viewer.src = item.viewer;
@@ -257,12 +265,14 @@ async function start() {
 
   function isolate(names) {
     clearMarks();
+    root.rotation.y = 0;
     const region = { focus: names, extra: null };
     applyDim(region, names ? 0.07 : 0.14);
     frameBox(unionOf(region), camera, desiredCam, desiredTarget, state);
   }
 
   function presentQuestion(question) {
+    state.quizzing = Boolean(question?.meshes);
     if (question?.model) {
       const item = modelById(question.model);
       if (item?.viewer) {
@@ -302,6 +312,7 @@ async function start() {
       button.setAttribute("aria-pressed", button.dataset.mode === next ? "true" : "false");
     }
     if (next === "study") {
+      state.quizzing = false;
       selectModel(currentModel?.id || "skeleton");
     } else if (next === "cards") {
       places.hidden = true;
