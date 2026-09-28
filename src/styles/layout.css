@@ -1,0 +1,70 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+body {
+  font-family: "Playfair Display", Georgia, serif;
+  overflow: hidden;
+  background-image:
+    radial-gradient(1100px 520px at 8% -10%, rgba(255, 255, 255, 0.95), transparent 52%),
+    radial-gradient(900px 640px at 110% 90%, rgba(214, 190, 160, 0.32), transparent 48%),
+    radial-gradient(700px 420px at 50% 120%, rgba(186, 150, 120, 0.12), transparent 42%);
+}
+
+.app {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 272px minmax(0, 1fr) 320px;
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
+header {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid var(--rule);
+  background: rgba(251, 248, 243, 0.88);
+}
+
+header h1 {
+  margin: 0;
+  font-family: Cinzel, Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+  letter-spacing: 0.28em;
+  text-indent: 0.28em;
+}
+
+header h1::after {
+  content: "";
+  display: block;
+  width: 76px;
+  height: 1px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+@media (max-width: 960px) {
+  body { overflow: auto; }
+
+  .app {
+    height: auto;
+    min-height: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto minmax(72vh, 78vh) auto;
+  }
+
+  .library {
+    max-height: 32vh;
+    border-right: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .card-wrap {
+    border-left: 0;
+    border-top: 1px solid var(--rule);
+  }
+}

@@ -1,0 +1,112 @@
+.card-wrap {
+  min-height: 0;
+  overflow: auto;
+  border-left: 1px solid var(--rule);
+  padding: 22px 18px 28px;
+  background: rgba(255, 252, 247, 0.4);
+}
+
+.sheet {
+  background: var(--sheet);
+  border: 1px solid rgba(74, 58, 42, 0.16);
+  box-shadow:
+    0 16px 40px rgba(70, 48, 30, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  padding: 22px 20px 26px;
+  min-height: 280px;
+}
+
+.eyebrow {
+  margin: 0 0 16px;
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.22em;
+  color: var(--accent);
+}
+
+.places { margin: 0 0 16px; }
+
+.places-label {
+  margin: 0 0 8px;
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  color: var(--ink-soft);
+}
+
+.place {
+  display: inline-block;
+  margin: 0 6px 6px 0;
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 0.86rem;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.place.active {
+  border-color: var(--accent);
+  background: var(--wash);
+}
+
+.sheet a.source {
+  color: var(--accent);
+}
+
+.placeholder {
+  margin: 8px 0 0;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.sys {
+  margin: 0;
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+
+.sheet h3 {
+  margin: 12px 0 0;
+  font-family: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+  font-weight: 600;
+  font-size: 1.85rem;
+  letter-spacing: 0.04em;
+}
+
+.latin {
+  margin: 2px 0 16px;
+  font-style: italic;
+  font-size: 1.12rem;
+  color: var(--ink-soft);
+}
+
+.fn {
+  margin: 0 0 12px;
+  line-height: 1.6;
+  font-size: 0.98rem;
+}
+
+.fn.zh {
+  font-family: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+  margin-bottom: 0;
+}
+
+.rule {
+  height: 1px;
+  margin: 0 0 12px;
+  border: 0;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.card-wrap::-webkit-scrollbar { width: 8px; }
+
+.card-wrap::-webkit-scrollbar-thumb {
+  background: rgba(90, 70, 50, 0.22);
+  border-radius: 8px;
+}

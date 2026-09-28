@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anatomy Atelier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Noto+Serif+TC:wght@500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Anatomy Atelier</h1>
+      <nav class="modes" id="modes" aria-label="Study modes">
+        <button type="button" data-mode="study" aria-pressed="true">Study</button>
+        <button type="button" data-mode="cards" aria-pressed="false">Cards</button>
+        <button type="button" data-mode="progress" aria-pressed="false">Progress</button>
+      </nav>
+    </header>
+    <nav class="library" id="library" aria-label="Model library">
+      <h2 id="library-title">MODELS</h2>
+      <div id="systems"></div>
+      <div id="session" hidden></div>
+    </nav>
+    <main class="stage" id="stage">
+      <p class="boot" id="boot">Preparing the study…</p>
+      <iframe id="viewer" title="Open 3D viewer" hidden></iframe>
+      <div id="markers"></div>
+      <aside class="callout" id="callout" hidden></aside>
+      <p class="hint" id="hint">Drag to turn · Scroll to zoom · Right-drag to pan</p>
+      <p class="credit"><a href="https://anatomytool.org/open3dmodel" target="_blank" rel="noopener noreferrer">Open 3D Model</a> · CC BY-SA</p>
+    </main>
+    <aside class="card-wrap">
+      <article class="sheet" id="sheet" aria-live="polite">
+        <p class="eyebrow" id="kicker">Field Notes</p>
+        <div id="places"></div>
+        <div id="card-body"></div>
+      </article>
+    </aside>
+    <section class="dashboard" id="dashboard" hidden></section>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

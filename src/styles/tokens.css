@@ -1,0 +1,11 @@
+:root {
+  --paper: #fbf8f3;
+  --ink: #2c241c;
+  --ink-soft: #6a5d52;
+  --rule: rgba(74, 58, 42, 0.18);
+  --accent: #7a3e36;
+  --wash: rgba(122, 62, 54, 0.09);
+  --sheet: #fffdf8;
+}
+
+* { box-sizing: border-box; }
