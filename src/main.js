@@ -268,7 +268,9 @@ async function start() {
     root.rotation.y = 0;
     const region = { focus: names, extra: null };
     applyDim(region, names ? 0.07 : 0.14);
-    frameBox(unionOf(region), camera, desiredCam, desiredTarget, state);
+    const part = unionOf(region);
+    if (names) frameInSitu(part, bodyBox, camera, desiredCam, desiredTarget, state);
+    else frameBox(part, camera, desiredCam, desiredTarget, state);
   }
 
   function presentQuestion(question) {
